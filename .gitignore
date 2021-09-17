@@ -1,0 +1,4 @@
+LHAPDF-files/*
+src/__pycache__
+example/*.pdf
+example/.ipynb_checkpoints/*
