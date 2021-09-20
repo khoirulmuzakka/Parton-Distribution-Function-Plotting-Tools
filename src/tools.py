@@ -1,6 +1,7 @@
 import lhapdf
 import numpy as np
 from math import *
+import sys
 
 
 lhapdf.pathsAppend('./../LHAPDF-files/')
@@ -24,6 +25,7 @@ class PDFs :
         self.A=A
         self.Z =Z
         self.N= A-Z
+        self.Nmembers = len(self.pdfset[0::1])
     
     def getPDFvalue (self, pdf, obsName, x, Q, fullNuc=False) : 
         '''
@@ -96,10 +98,25 @@ class PDFs :
                 return (pdf.xfxQ(3,x,Q)+ pdf.xfxQ(-3,x,Q))/(pdf.xfxQ(-2,x, Q)+ pdf.xfxQ(-1,x, Q))
         else : 
             print ("Unknown flavor! Exiting...")
-            exit
+            sys.exit()
     
 
     def getPDFerrors(self, xList, Q, obs, fullNuc=False) : 
+        """
+        Get PDFs and their uncertainties. 
+        Arguments : 
+              xList : list of x values
+              Q     : Virtuality value
+              obs   : flavor, possible values : ""g", "t", "b", "c", "s", "u", d", "dbar", "ubar", "sbar", "cbar", "bbar", "tbar", 
+                                      "uv", "dv", "ssb", "smsb", "ubdb", "dboub", "kappa"
+              FullNuc : boolean flag to swicth on averaging procedure for u, ubar, d, dbar flavors. The full PDF is then evaluated as : 
+                       f_i^A = (Z f^{p/A}+ N f^{n/A})/A
+            
+        return : central, deltaplus, deltaminus 
+              central : central PDF (numpy array)
+              deltaplus : Upper error (numpy array)
+              deltaminus : lower errror (numpy array)
+        """
         central = []
         DeltaPlus = []
         DeltaMinus = []
@@ -140,7 +157,7 @@ class PDFs :
                 dm = dp
             else : 
                 print("Unknown error type! Exiting ...")
-                exit
+                sys.exit()
             
             DeltaPlus.append(dp)
             DeltaMinus.append(dm)
@@ -150,6 +167,29 @@ class PDFs :
         DeltaMinus = np.array(DeltaMinus)
 
         return central, DeltaPlus, DeltaMinus
+
+    
+
+    def getPDF(self, x, Q, obs, fullNuc=False ) : 
+        """
+        Function to get PDF value for a given x, Q values. 
+        Arguments : 
+            x : momentum fraction x
+            Q : Factorization scale
+            obs : flavor, possible values : ""g", "t", "b", "c", "s", "u", d", "dbar", "ubar", "sbar", "cbar", "bbar", "tbar", 
+                                      "uv", "dv", "ssb", "smsb", "ubdb", "dboub", "kappa"
+            fullNuc = False : boolean flag to set whether nucleon averaging procedure (to get the full nuclear PDFs) should be performed. 
+        return : 
+            numpy array of size N, where N is the number of PDF members. The zeroth element is the central, while the rest are from error PDFs
+        """
+        N=len(self.pdfset[0::1] )
+        a=[]
+        for i in range(N) : 
+            val = self.getPDFvalue(self.pdfset[i], obs, x, Q, fullNuc)
+            a.append(val)
+        return np.array(a)
+
+    
 
 
 
