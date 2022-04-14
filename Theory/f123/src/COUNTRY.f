@@ -1,0 +1,10 @@
+      SUBROUTINE COUNTRY(X,NFLAG)
+      DOUBLE COMPLEX X,Z
+      DOUBLE PRECISION R
+      Z=1.-X
+      IF(ABS(Z).EQ.0.) RETURN
+      Z=-LOG(Z)
+      R=ABS(Z)
+      IF (R.LE.DLOG(2.D0)) NFLAG=1
+      RETURN
+      END

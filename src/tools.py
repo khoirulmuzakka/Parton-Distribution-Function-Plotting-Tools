@@ -7,7 +7,7 @@ import sys
 lhapdf.pathsAppend('./../LHAPDF-files/')
 
 class PDFs : 
-    def __init__(self, path, errorType, A=1, Z=1) : 
+    def __init__(self, path, errorType, A=1, Z=1, fullNuc = False) : 
         '''
         args : 
             path  : ( string )folder name of the lhapdf file. 
@@ -26,8 +26,9 @@ class PDFs :
         self.Z =Z
         self.N= A-Z
         self.Nmembers = len(self.pdfset[0::1])
+        self.fullNuc = fullNuc
     
-    def getPDFvalue (self, pdf, obsName, x, Q, fullNuc=False) : 
+    def getPDFvalue (self, pdf, obsName, x, Q) : 
         '''
         Parton name can only be : "g", "t", "b", "c", "s", "u", d", "dbar", "ubar", "sbar", "cbar", "bbar", "tbar", 
                                       "uv", "dv", "ssb", "smsb", "ubdb", "dboub", "kappa"
@@ -57,42 +58,60 @@ class PDFs :
         elif (obsName =="smsb") : 
             return pdf.xfxQ(3,x,Q)- pdf.xfxQ(-3,x,Q)   
         elif (obsName == "u") : 
-            if (fullNuc) :
+            if (self.fullNuc) :
                 return (self.Z*pdf.xfxQ(2,x, Q) + self.N*pdf.xfxQ(1,x, Q))/self.A
             else :  
                 return pdf.xfxQ(2,x, Q)
         elif (obsName =="ubar") :
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))/self.A
             else : 
                 return pdf.xfxQ(-2,x, Q)
         elif (obsName =="d") :
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(1,x, Q) + self.N*pdf.xfxQ(2,x, Q))/self.A
             else : 
                 return pdf.xfxQ(1,x, Q)
         elif (obsName =="dbar") :
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q))/self.A
             else : 
                 return pdf.xfxQ(-1,x, Q)
         elif (obsName == "uv") : 
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(2,x, Q) + self.N*pdf.xfxQ(1,x, Q))/self.A - (self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))/self.A
             else : 
                 return pdf.xfxQ(2,x, Q)-pdf.xfxQ(-2,x, Q)
         elif (obsName =="dv") : 
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(1,x, Q) + self.N*pdf.xfxQ(2,x, Q))/self.A - (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q))/self.A
             else : 
                 return pdf.xfxQ(1,x, Q) - pdf.xfxQ(-1,x, Q)
         elif (obsName== "ubdb") : 
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))/self.A + (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q))/self.A
             else : 
                 return pdf.xfxQ(-2,x, Q)+ pdf.xfxQ(-1,x, Q)
+        elif (obsName== "dboub") : 
+            if (self.fullNuc) : 
+                denom = (self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))
+                if (denom==0.0) : 
+                    return 0.0
+                else : 
+                    return (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q)) /denom
+            else : 
+                denom = pdf.xfxQ(-2,x, Q)
+                if (denom==0.0) : 
+                    return 0.0
+                else : 
+                    return pdf.xfxQ(-1,x, Q)/denom
+        elif (obsName== "ubmdb") : 
+            if (self.fullNuc) : 
+                return (self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))/self.A - (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q))/self.A
+            else : 
+                return pdf.xfxQ(-2,x, Q)- pdf.xfxQ(-1,x, Q)
         elif (obsName =="kappa") : 
-            if (fullNuc) : 
+            if (self.fullNuc) : 
                 return (pdf.xfxQ(3,x,Q)+ pdf.xfxQ(-3,x,Q))/((self.Z*pdf.xfxQ(-2,x, Q) + self.N*pdf.xfxQ(-1,x, Q))/self.A + (self.Z*pdf.xfxQ(-1,x, Q) + self.N*pdf.xfxQ(-2,x, Q))/self.A)
             else : 
                 return (pdf.xfxQ(3,x,Q)+ pdf.xfxQ(-3,x,Q))/(pdf.xfxQ(-2,x, Q)+ pdf.xfxQ(-1,x, Q))
@@ -101,7 +120,7 @@ class PDFs :
             sys.exit()
     
 
-    def getPDFerrors(self, xList, Q, obs, fullNuc=False) : 
+    def getPDFerrors(self, xList, Q, obs) : 
         """
         Get PDFs and their uncertainties. 
         Arguments : 
@@ -121,29 +140,29 @@ class PDFs :
         DeltaPlus = []
         DeltaMinus = []
         for x in xList : 
-            cent = self.getPDFvalue(self.pdfset[0], obs, x, Q, fullNuc)
+            cent = self.getPDFvalue(self.pdfset[0], obs, x, Q)
             central.append(cent)
             if (self.errorType == "Asym") : 
                 dp = np.sqrt(np.sum(np.array([
-                     max( self.getPDFvalue(pdfp, obs, x, Q, fullNuc)-cent, self.getPDFvalue(pdfm, obs, x, Q, fullNuc)-cent,0.  )**2 
+                     max( self.getPDFvalue(pdfp, obs, x, Q)-cent, self.getPDFvalue(pdfm, obs, x, Q)-cent,0.  )**2 
                      for pdfp, pdfm in zip(self.pdfset[1::2], self.pdfset[2::2]) 
                      ] )))
                 
                 dm = np.sqrt(np.sum(np.array([ 
-                     max( cent-self.getPDFvalue(pdfp, obs, x, Q, fullNuc), cent-self.getPDFvalue(pdfm, obs, x, Q, fullNuc),0. )**2
+                     max( cent-self.getPDFvalue(pdfp, obs, x, Q), cent-self.getPDFvalue(pdfm, obs, x, Q),0. )**2
                                      for pdfp, pdfm in zip(self.pdfset[1::2], self.pdfset[2::2] )
                      ] )))
 
             elif (self.errorType == "sym") : 
                 dp = 0.5*np.sqrt(np.sum(np.array([ 
-                        ( self.getPDFvalue(pdfp, obs, x, Q, fullNuc) - self.getPDFvalue(pdfm, obs, x, Q, fullNuc) )**2
+                        ( self.getPDFvalue(pdfp, obs, x, Q) - self.getPDFvalue(pdfm, obs, x, Q) )**2
                                      for pdfp, pdfm in zip(self.pdfset[1::2], self.pdfset[2::2] )
                     ] )))
                 dm = dp
 
             elif (self.errorType == "mc2hessian") : 
                 dp = np.sqrt(np.sum(np.array([ 
-                        ( self.getPDFvalue(pdf, obs, x, Q, fullNuc) - cent)**2
+                        ( self.getPDFvalue(pdf, obs, x, Q) - cent)**2
                         for pdf in self.pdfset[1::1] 
                     ] )))
                 dm = dp
@@ -151,7 +170,7 @@ class PDFs :
             elif (self.errorType == "MCreplica") : 
                 Nrep = len(self.pdfset[1::1] )
                 dp = np.sqrt(np.sum(np.array([ 
-                        ( self.getPDFvalue(pdf, obs, x, Q, fullNuc) - cent)**2
+                        ( self.getPDFvalue(pdf, obs, x, Q) - cent)**2
                         for pdf in self.pdfset[1::1] 
                     ] )))/Nrep
                 dm = dp
@@ -170,7 +189,7 @@ class PDFs :
 
     
 
-    def getPDF(self, x, Q, obs, fullNuc=False ) : 
+    def getPDF(self, x, Q, obs) : 
         """
         Function to get PDF value for a given x, Q values. 
         Arguments : 
@@ -185,7 +204,7 @@ class PDFs :
         N=len(self.pdfset[0::1] )
         a=[]
         for i in range(N) : 
-            val = self.getPDFvalue(self.pdfset[i], obs, x, Q, fullNuc)
+            val = self.getPDFvalue(self.pdfset[i], obs, x, Q)
             a.append(val)
         return np.array(a)
 

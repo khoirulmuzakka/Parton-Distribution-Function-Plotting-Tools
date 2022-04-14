@@ -1,4 +1,9 @@
 LHAPDF-files/*
 src/__pycache__
-example/*.pdf
+example/*/*.pdf
 example/.ipynb_checkpoints/*
+example/*/.ipynb_checkpoints/*
+CMakeFiles
+CMakeCache.txt
+Makefile
+build
