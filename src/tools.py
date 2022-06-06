@@ -172,7 +172,7 @@ class PDFs :
                 dp = np.sqrt(np.sum(np.array([ 
                         ( self.getPDFvalue(pdf, obs, x, Q) - cent)**2
                         for pdf in self.pdfset[1::1] 
-                    ] )))/Nrep
+                    ] ))/(Nrep-1))
                 dm = dp
             else : 
                 print("Unknown error type! Exiting ...")
