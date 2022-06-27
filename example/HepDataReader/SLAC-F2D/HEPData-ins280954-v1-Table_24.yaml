@@ -1,0 +1,60 @@
+dependent_variables:
+- header: {name: F2}
+  qualifiers:
+  - {name: PLAB, units: GEV, value: '3.748,24.503'}
+  - {name: RE, value: E- DEUT --> E- X}
+  - {name: X, value: '0.85'}
+  values:
+  - errors:
+    - {label: stat, symerror: 0.0001}
+    - {label: sys, symerror: 0.00032}
+    value: 0.00645
+  - errors:
+    - {label: stat, symerror: 0.00015}
+    - {label: sys, symerror: 0.00025}
+    value: 0.00572
+  - errors:
+    - {label: stat, symerror: 0.00011}
+    - {label: sys, symerror: 0.00018}
+    value: 0.00532
+  - errors:
+    - {label: stat, symerror: 9.0e-05}
+    - {label: sys, symerror: 0.00016}
+    value: 0.00491
+  - errors:
+    - {label: stat, symerror: 6.0e-05}
+    - {label: sys, symerror: 0.00013}
+    value: 0.00465
+  - errors:
+    - {label: stat, symerror: 9.0e-05}
+    - {label: sys, symerror: 0.00013}
+    value: 0.00413
+  - errors:
+    - {label: stat, symerror: 5.0e-05}
+    - {label: sys, symerror: 0.00012}
+    value: 0.00395
+  - errors:
+    - {label: stat, symerror: 8.0e-05}
+    - {label: sys, symerror: 0.00015}
+    value: 0.00399
+  - errors:
+    - {label: stat, symerror: 9.0e-05}
+    - {label: sys, symerror: 0.00025}
+    value: 0.00324
+  - errors:
+    - {label: stat, symerror: 8.0e-05}
+    - {label: sys, symerror: 0.00022}
+    value: 0.0028
+independent_variables:
+- header: {name: Q2, units: GEV**2}
+  values:
+  - {value: 10.035}
+  - {value: 11.076}
+  - {value: 12.177}
+  - {value: 13.949}
+  - {value: 15.449}
+  - {value: 16.641}
+  - {value: 18.463}
+  - {value: 19.992}
+  - {value: 23.403}
+  - {value: 29.089}

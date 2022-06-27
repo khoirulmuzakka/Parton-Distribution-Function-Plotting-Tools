@@ -1,0 +1,130 @@
+dependent_variables:
+- header: {name: F2}
+  qualifiers:
+  - {name: PLAB, units: GEV, value: '3.748,24.503'}
+  - {name: RE, value: E- DEUT --> E- X}
+  - {name: X, value: '0.45'}
+  values:
+  - errors:
+    - {label: stat, symerror: 0.00182}
+    - {label: sys, symerror: 0.00109}
+    value: 0.18167
+  - errors:
+    - {label: stat, symerror: 0.00472}
+    - {label: sys, symerror: 0.00185}
+    value: 0.16854
+  - errors:
+    - {label: stat, symerror: 0.00175}
+    - {label: sys, symerror: 0.00123}
+    value: 0.17508
+  - errors:
+    - {label: stat, symerror: 0.00118}
+    - {label: sys, symerror: 0.00084}
+    value: 0.16866
+  - errors:
+    - {label: stat, symerror: 0.00148}
+    - {label: sys, symerror: 0.00131}
+    value: 0.16424
+  - errors:
+    - {label: stat, symerror: 0.00227}
+    - {label: sys, symerror: 0.00146}
+    value: 0.16222
+  - errors:
+    - {label: stat, symerror: 0.00126}
+    - {label: sys, symerror: 0.00126}
+    value: 0.15763
+  - errors:
+    - {label: stat, symerror: 0.00376}
+    - {label: sys, symerror: 0.00141}
+    value: 0.15674
+  - errors:
+    - {label: stat, symerror: 0.0015}
+    - {label: sys, symerror: 0.00135}
+    value: 0.14982
+  - errors:
+    - {label: stat, symerror: 0.00103}
+    - {label: sys, symerror: 0.00132}
+    value: 0.14674
+  - errors:
+    - {label: stat, symerror: 0.00145}
+    - {label: sys, symerror: 0.00145}
+    value: 0.14508
+  - errors:
+    - {label: stat, symerror: 0.00129}
+    - {label: sys, symerror: 0.00114}
+    value: 0.14281
+  - errors:
+    - {label: stat, symerror: 0.00278}
+    - {label: sys, symerror: 0.00204}
+    value: 0.14607
+  - errors:
+    - {label: stat, symerror: 0.00141}
+    - {label: sys, symerror: 0.00155}
+    value: 0.14128
+  - errors:
+    - {label: stat, symerror: 0.00084}
+    - {label: sys, symerror: 0.00139}
+    value: 0.13928
+  - errors:
+    - {label: stat, symerror: 0.00265}
+    - {label: sys, symerror: 0.00237}
+    value: 0.13947
+  - errors:
+    - {label: stat, symerror: 0.0012}
+    - {label: sys, symerror: 0.00174}
+    value: 0.13379
+  - errors:
+    - {label: stat, symerror: 0.00135}
+    - {label: sys, symerror: 0.00202}
+    value: 0.13456
+  - errors:
+    - {label: stat, symerror: 0.00092}
+    - {label: sys, symerror: 0.0017}
+    value: 0.13101
+  - errors:
+    - {label: stat, symerror: 0.00103}
+    - {label: sys, symerror: 0.00232}
+    value: 0.12915
+  - errors:
+    - {label: stat, symerror: 0.00142}
+    - {label: sys, symerror: 0.00258}
+    value: 0.12921
+  - errors:
+    - {label: stat, symerror: 0.00152}
+    - {label: sys, symerror: 0.00278}
+    value: 0.12642
+  - errors:
+    - {label: stat, symerror: 0.00941}
+    - {label: sys, symerror: 0.00902}
+    value: 0.13258
+  - errors:
+    - {label: stat, symerror: 0.00625}
+    - {label: sys, symerror: 0.00815}
+    value: 0.13587
+independent_variables:
+- header: {name: Q2, units: GEV**2}
+  values:
+  - {value: 1.699}
+  - {value: 1.87}
+  - {value: 2.003}
+  - {value: 2.291}
+  - {value: 2.444}
+  - {value: 2.654}
+  - {value: 3.364}
+  - {value: 3.804}
+  - {value: 4.586}
+  - {value: 4.97}
+  - {value: 5.299}
+  - {value: 5.683}
+  - {value: 6.075}
+  - {value: 6.508}
+  - {value: 7.11}
+  - {value: 7.837}
+  - {value: 8.434}
+  - {value: 9.05}
+  - {value: 9.833}
+  - {value: 10.688}
+  - {value: 11.612}
+  - {value: 12.749}
+  - {value: 15.019}
+  - {value: 16.388}

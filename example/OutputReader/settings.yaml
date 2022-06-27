@@ -1,0 +1,280 @@
+%YAML 1.2
+---
+Core:
+  VariableFlavourNumber: true
+  NumberOfFlavours: 5
+  NumberOfFlavoursAtQmin: 4
+  ListNuclei : [P,N, H2, HE3, HE4, LI6, LI7, BE9, C12, N14, AL27, CA40, FE56, FE56iso, CU64, KR84, AG108, SN119, XE131, W184, AU197, PB208, PB207iso, AU197iso]
+  CalculationOrder: 1
+  AlphaIn: 0.118044 # this is from CJ15 
+  AlphaQIn: 91.188 # this is from CJ15 
+  MassU: 0.0
+  MassD: 0.0
+  MassS: 0.0
+  MassC: 1.3
+  MassB: 4.5  
+  MassT: 180.0 
+  MassH: 0.938
+  MassW: 80.385
+  MassZ: 91.188
+  SINW2: 0.2303
+  SamplingX: 500
+  Xmin: 1.0e-8
+  Xmax: 1.0
+  SamplingQ: 23
+  Qmin: 1.3
+  Qmax: 10000.0
+  FacScheme: MSBARUNPOL
+
+EvolutionHoppet:
+  InterpolationOrder: 3
+  PoleMassesVFN: true
+  CachedEvo: false
+  UseSubXGrids: false # use multiple x-spacing grids
+
+Interpolator:
+  InterpolationOrder1d: 3
+  InterpolationOrder2d: 3
+
+Chi2 : 
+  Weights : [] # example : [ [ 6211, 10.0 ], [ 6213,  10.0] ] #
+  IDIgnoreCorr : [] # example : [5946, 5947]
+  #NormScheme : 
+  # 1 : D-method - multplied by data : chi2= (rD-T)C^{-1}(rD-T)+(1-r)^2/sigmanorm^2, which is equal to (D-T)C_D^{-1}(D-t),  C_D = C+signorm^2 D_iD_j for a single data set
+  # 2 : t-method - multiplied by theory : chi2= chi2= (D-rT)C^{-1}(D-rT)+(1-r)^2/sigmanorm^2 which is equal to (D-T)C_T^{-1}(D-T), C_T = C+signorm^2 T_iT_j for a single data set.
+  # 3 : DAG-method - chi2= chi2= (D-T/r)C^{-1}(D-T/r)+(1-r)^2/sigmanorm^2 
+  NormScheme   : 2
+  NormParams : [   [ [6233, 6231, 6235], "norm1", 1.0], 
+                   [ [6215, 6213, 6211], "norm2", 1.0], 
+                   [ [6234, 6232],       "norm3", 1.0],
+                   [ [4001],             "norm6", 1.0],
+                   [ [4002],             "norm7", 1.0],
+                   [ [4003],             "norm8", 1.0],
+                   [ [4004],             "norm9", 1.0],
+                   [ [4101],             "norm10", 1.0],
+                   [ [4102],             "norm11", 1.0],
+                   [ [4201],             "norm12", 1.0],
+                   [ [5942],             "norm13", 1.0],
+                   [ [5943],             "norm14", 1.0],
+                   [ [5944],             "norm15", 1.0],
+                   [ [5945],             "norm16", 1.0],
+                   [ [5946],             "norm17", 1.0],
+                   [ [5947],             "norm18", 1.0],
+                   [ [5962],             "norm19", 1.0],
+                   [ [5963],             "norm20", 1.0],
+                   [ [791],             "norm21", 1.0],
+                   [ [792],             "norm22", 1.0],
+                   [ [793],             "norm23", 1.0],
+                   [ [794],             "norm24", 1.0],
+                   [ [9976],             "norm25", 1.0],
+                   [ [9977],             "norm26", 1.0],
+                   [ [9978],             "norm27", 1.0],
+                   [ [9979],             "norm28", 1.0],
+                   [ [9980, 9981],             "norm29", 1.0],
+                   [ [9982, 9983],             "norm30", 1.0],
+                   [ [9984, 9985],             "norm31", 1.0],
+                   [ [9986, 9987],             "norm32", 1.0],
+                   [ [9988, 9989],             "norm33", 1.0],
+                   [ [9990, 9991, 9992, 9993, 9994, 9995, 9996, 9997, 9998, 9999],             "norm34", 1.0],]
+
+InputParam__ :
+  NbParameters: 111  # This should specify as many parameters as the class takes it is a constant for each sub class of InputParametrization
+  NbOfInputFlavors: 7
+  DeuteronPDFs : Proton # Proton : the bound proton in deuteron is the same as free proton, Fit : fit deuteron PDFs.
+  uvps: [["uv_p1", 0.63002],["uv_p2", 2.93351],["uv_p3",-2.36916],["uv_p4", 1.26642],["uv_p5", 1.71840],
+         ["uv_a1",-2.71781],["uv_a2",-0.16215],["uv_a3", 0.01827],["uv_a4",12.08332],["uv_a5",-1.14003],   
+         ["uv_b1", 0.00586],["uv_b2", 0.52404],["uv_b3", 0.07286],["uv_b4", 0.03835],["uv_b5", 0.61502]]
+  dvps: [["dv_p1", 0.51328],["dv_p2", 4.21144],["dv_p3",-2.37454],["dv_p4", 0.96497],["dv_p5", 3.00000],
+         ["dv_a1", 0.27155],["dv_a2",-0.19597],["dv_a3", 0.08540],["dv_a4", 3.87410],["dv_a5",-0.07979], 
+         ["dv_b1", 0.46598],["dv_b2", 0.44031],["dv_b3", 0.10729],["dv_b4",-0.01843],["dv_b5",-0.23584]]
+  gps:  [["g_p0", 0.38232],["g_p1", 0.52256],["g_p2",3.03369],["g_p3",4.39448],["g_p4", 2.35917],["g_p5",-3.00000],
+          ["g_a0", -0.25571],["g_a1",-0.00113],["g_a2",0.00000],["g_a3",0.38307],["g_a4", 0.05517],["g_a5", 0.00252],
+          ["g_b0", -0.03848],["g_b1",-1.34069],["g_b2",0.00000],["g_b3",0.52045],["g_b4",-0.51582],["g_b5",-1.41797]]
+  ubdbps: [["ubdb_p1",-0.32390],["ubdb_p2",8.11550],["ubdb_p3", 0.41321],["ubdb_p4", 4.75394],["ubdb_p5", 0.61366],
+           ["ubdb_a1", 0.40579],["ubdb_a2",0.41500],["ubdb_a3",-0.75881],["ubdb_a4",-0.20291],["ubdb_a5",-0.08417],
+           ["ubdb_b1", 0.17248],["ubdb_b2",0.29035],["ubdb_b3", 0.29820],["ubdb_b4", 0.88820],["ubdb_b5", 1.35312]]
+  ssbps: [["ssbkappa_p0", 0.50000],["ssb_p1",-0.32390],["ssb_p2", 8.11550],["ssb_p3", 0.41321],["ssb_p4", 4.75394],["ssb_p5", 0.61366],
+          ["ssbkappa_a0", 0.16706],["ssb_a1", 0.40579],["ssb_a2", 0.41500],["ssb_a3", 0.00000],["ssb_a4", 0.00000],["ssb_a5", 0.00000],
+          ["ssbkappa_b0", 0.10444],["ssb_b1", 0.17248],["ssb_b2", 0.29035],["ssb_b3", 0.00000],["ssb_b4", 0.00000],["ssb_b5", 0.00000]]
+  smsbps: [["smsb_p1", 0.000],["smsb_p2", 0.00000],["smsb_p3", 0.00000],["smsb_p4", 0.00000],["smsb_p5", 0.0000],
+           ["smsb_a1", 0.0000],["smsb_a2", 0.0000],["smsb_a3", 0.00000],["smsb_a4", 0.00000],["smsb_a5", 0.00000],
+           ["smsb_b1", 0.0000],["smsb_b2", 0.0000],["smsb_b3", 0.00000],["smsb_b4", 0.00000],["smsb_b5", 0.00000]]
+  dboubps: [["dboub_p1",10.07478],["dboub_p2", 4.95673],["dboub_p3", 15.16661],["dboub_p4",17.00000],["dboub_p5",9.94806],
+            ["dboub_a1",0.0],["dboub_a2",0.0],["dboub_a3",0.0],["dboub_a4",0.0],["dboub_a5",0.0],
+            ["dboub_b1",0.0],["dboub_b2",0.0],["dboub_b3",0.0],["dboub_b4",0.0],["dboub_b5",0.0]]
+
+
+
+InputParamCJ_1: #This is input parameters based on CJ15
+  NbParameters: 102  # This should specify as many parameters as the class takes it is a constant for each sub class of InputParametrization
+  NbOfInputFlavors: 6
+  Amode : 1 # mode 1 : c = p+a(1-A^-b), mode 2 : c = p+ a logA+ b (logA)^2
+  DeuteronPDFs : Proton # Proton : the bound proton in deuteron is the same as free proton, Fit : fit deuteron PDFs.
+  uvps: [["uv_p1", 0.61537],["uv_p2", 3.5433],["uv_p3",0.0],["uv_p4", 3.4609],["uv_p5", 0.0],
+         ["uv_a1",-2.090381622314453],["uv_a2",0.7593116760253906],["uv_a3", -0.2044868469238281],["uv_a4", 7.99683952331543],["uv_a5",0.0],   
+         ["uv_b1", -0.003610610961914062],["uv_b2",-0.07210922241210938],["uv_b3", -0.4259319305419922],["uv_b4",-0.07703208923339844],["uv_b5", 0.0]]
+  dvps: [["dv_p1", 1.1595],["dv_p2",  6.5514],["dv_p3",  -3.5030],["dv_p4", 4.6787],["dv_p5", 0.0036], ["dv_p6", 2.0],
+         ["dv_a1", -0.121734619140625],["dv_a2",-1.219417572021484],["dv_a3",-3.817220687866211],["dv_a4", 1.955776214599609],["dv_a5", 0.0], ["dv_a6", 0.0],
+         ["dv_b1", 1.610185623168945],["dv_b2",-0.04747772216796875],["dv_b3", 0.007986068725585938],["dv_b4",0.3432445526123047],["dv_b5",0.0], ["dv_b6", 0.0]]
+  gps:  [["gsum_p0", 0.3887],["g_p1", 0.60307],["g_p2",  6.4812],["g_p3", -3.3064],["g_p4",  3.1721],["g_p5",0.00000],
+          ["gsum_a0", -0.27557373046875],["g_a1",-0.0001277923583984375],["g_a2",6.796937942504883],["g_a3",0.2172813415527344],["g_a4", 0.007715225219726562],["g_a5", 0.0],
+          ["gsum_b0", -0.01292800903320312],["g_b1", -1.387672424316406],["g_b2",0.1069164276123047],["g_b3",0.3240985870361328],["g_b4",-0.3882102966308594],["g_b5", 0.0 ]]
+  ubdbps: [["ubdb_p1",-0.20775],["ubdb_p2",8.3286],["ubdb_p3", 0.0     ],["ubdb_p4",  14.606],["ubdb_p5", 0.0],
+           ["ubdb_a1",0.5041103363037109],["ubdb_a2",2.839807510375977],["ubdb_a3",-0.01426506042480469],["ubdb_a4", 0.5006732940673828],["ubdb_a5", 0.0 ],
+           ["ubdb_b1", 0.0634918212890625],["ubdb_b2",0.03109931945800781],["ubdb_b3", -1.380508422851562],["ubdb_b4", 20.68239593505859],["ubdb_b5", 0.0 ]]
+  ssbps: [["ssbsum_p0", 0.50002],["ssb_p1",-0.20775],["ssb_p2", 8.3286],["ssb_p3", 0.0 ]    ,["ssb_p4", 14.606], ["ssb_p5", 0.0],
+          ["ssbsum_a0", 0.5052642822265625],["ssb_a1", 0.3145656585693359],["ssb_a2",2.173612594604492],["ssb_a3", 0.00000],["ssb_a4", 0.00000],["ssb_a5", 0.00000],
+          ["ssbsum_b0",0.0457305908203125],["ssb_b1", 0.26873779296875],["ssb_b2",0.4956092834472656],["ssb_b3", 0.00000],["ssb_b4", 0.00000],["ssb_b5", 0.00000]]
+  dboubps: [["dboub_p0", 35712 ],["dboub_p1", 4.0249],["dboub_p2", 20.154],["dboub_p3",17.00000],["dboub_p4",51.156], ["dboub_p5",0.0],
+            ["dboub_a0",0.0],    ["dboub_a1",0.0],      ["dboub_a2",0.0],      ["dboub_a3",0.0],     ["dboub_a4",0.0], ["dboub_a5",0.0],
+            ["dboub_b0",0.0],    ["dboub_b1",0.0],      ["dboub_b2",0.0],      ["dboub_b3",0.0],     ["dboub_b4",0.0], ["dboub_b5",0.0]]
+
+InputParamCJ_2: #This is input parameters based on CJ15
+  NbParameters: 102  # This should specify as many parameters as the class takes it is a constant for each sub class of InputParametrization
+  NbOfInputFlavors: 6
+  Amode : 2 # mode 1 : c = p+a(1-A^-b), mode 2 : c = p+ a logA+ b (logA)^2
+  DeuteronPDFs : Proton # Proton : the bound proton in deuteron is the same as free proton, Fit : fit deuteron PDFs.
+  uvps: [["uv_p1", 0.61537],["uv_p2", 3.5433],["uv_p3",0.0],["uv_p4", 3.4609],["uv_p5", 0.0],
+         ["uv_a1",7.57473723e-03],["uv_a2",-0.05381634],["uv_a3",-0.03592421],["uv_a4", -0.60383777],["uv_a5",0.0],   
+         ["uv_b1",7.92695312e-06],["uv_b2",-0.0024215 ],["uv_b3",0.06781714],["uv_b4",-0.02952134],["uv_b5", 0.0]]
+  dvps: [["dv_p1", 1.1595],["dv_p2",  6.5514],["dv_p3",  -3.5030],["dv_p4", 4.6787],["dv_p5", 0.0036], ["dv_p6", 2.0],
+         ["dv_a1", -0.06284184],["dv_a2", -0.05748919],["dv_a3",-0.03047815],["dv_a4", 0.55876741],["dv_a5", 0.0], ["dv_a6", 0.0],
+         ["dv_b1", 0.00773882],["dv_b2", -0.00157094],["dv_b3", 0.00011882],["dv_b4",-0.04763407],["dv_b5",0.0], ["dv_b6", 0.0]]
+  gps:  [["gsum_p0", 0.3887],["g_p1", 0.60307],["g_p2",  6.4812],["g_p3", -3.3064],["g_p4",  3.1721],["g_p5",0.00000],
+          ["gsum_a0",3.56196621e-03],["g_a1",-0.05223647],["g_a2",0.70805557],["g_a3",0.0595223],["g_a4", 0.00019168],["g_a5", 0.0],
+          ["gsum_b0", 2.36477741e-05],["g_b1", 0.01585596],["g_b2",-0.02903789],["g_b3",-0.00493719],["g_b4",-0.00187952],["g_b5", 0.0 ]]
+  ubdbps: [["ubdb_p1",-0.20775],["ubdb_p2",8.3286],["ubdb_p3", 0.0     ],["ubdb_p4",  14.606],["ubdb_p5", 0.0],
+           ["ubdb_a1", 0.03169102],["ubdb_a2",0.08809249],["ubdb_a3",-5.52342981],["ubdb_a4", 0.26542375],["ubdb_a5", 0.0 ],
+           ["ubdb_b1", -0.00085355],["ubdb_b2",-0.00126017],["ubdb_b3",1.68365775],["ubdb_b4", -0.03325976],["ubdb_b5", 0.0 ]]
+  ssbps: [["ssbsum_p0", 0.50002],["ssb_p1",-0.20775],["ssb_p2", 8.3286],["ssb_p3", 0.0 ]    ,["ssb_p4", 14.606], ["ssb_p5", 0.0],
+          ["ssbsum_a0", 0.02298389],["ssb_a1", 0.0745659],["ssb_a2",0.7885955 ],["ssb_a3", 0.00000],["ssb_a4", 0.00000],["ssb_a5", 0.00000],
+          ["ssbsum_b0",-0.00046589],["ssb_b1",-0.0056175],["ssb_b2",-0.07819942],["ssb_b3", 0.00000],["ssb_b4", 0.00000],["ssb_b5", 0.00000]]
+  dboubps: [["dboub_p0", 35712 ],["dboub_p1", 4.0249],["dboub_p2", 20.154],["dboub_p3",17.00000],["dboub_p4",51.156], ["dboub_p5",0.0],
+            ["dboub_a0",0.0],    ["dboub_a1",0.0],      ["dboub_a2",0.0],      ["dboub_a3",0.0],     ["dboub_a4",0.0], ["dboub_a5",0.0],
+            ["dboub_b0",0.0],    ["dboub_b1",0.0],      ["dboub_b2",0.0],      ["dboub_b3",0.0],     ["dboub_b4",0.0], ["dboub_b5",0.0]]
+
+InputParamCJ: #This is input parameters based on CJ15
+  NbParameters: 102  # This should specify as many parameters as the class takes it is a constant for each sub class of InputParametrization
+  NbOfInputFlavors: 6
+  Amode : 3 # mode 1 : c = p+a(1-A^-b), mode 2 : c = p+ a logA+ b (logA)^2, mode 3 : c=p+ a logA^b
+  DeuteronPDFs : Proton # Proton : the bound proton in deuteron is the same as free proton, Fit : fit deuteron PDFs.
+  uvps: [["uv_p1", 0.61537],["uv_p2", 3.5433],["uv_p3",0.0],["uv_p4", 3.4609],["uv_p5", 0.0],
+         ["uv_a1",0.00752812],["uv_a2",-0.05160756],["uv_a3",0.04511681],["uv_a4",-0.577849],["uv_a5",0.0],   
+         ["uv_b1",1.00720148],["uv_b2",1.15183037],["uv_b3", 2.18434796],["uv_b4",1.16291048],["uv_b5", 0.0]]
+  dvps: [["dv_p1", 1.1595],["dv_p2",  6.5514],["dv_p3",  -3.5030],["dv_p4", 4.6787],["dv_p5", 0.0036], ["dv_p6", 2.0],
+         ["dv_a1", -0.11484813],["dv_a2",-0.05579916],["dv_a3",-0.03064967],["dv_a4", 0.72455539],["dv_a5", 0.0], ["dv_a6", 0.0],
+         ["dv_b1", 0.03754045],["dv_b2",1.09790154],["dv_b3", 0.98432375],["dv_b4",0.4962179],["dv_b5",0.0], ["dv_b6", 0.0]]
+  gps:  [["gsum_p0", 0.3887],["g_p1", 0.60307],["g_p2",  6.4812],["g_p3", -3.3064],["g_p4",  3.1721],["g_p5",0.00000],
+          ["gsum_a0",0.00352966],["g_a1",2.92534188e-06],["g_a2",0.76849805],["g_a3",0.07619554],["g_a4", -1.69682582e-03],["g_a5", 0.0],
+          ["gsum_b0",1.02590051],["g_b1",  6.66573290e+00],["g_b2",0.80722612],["g_b3",0.51637652],["g_b4",2.05118541e+00],["g_b5", 0.0 ]]
+  ubdbps: [["ubdb_p1",-0.20775],["ubdb_p2",8.3286],["ubdb_p3", 0.0     ],["ubdb_p4",  14.606],["ubdb_p5", 0.0],
+           ["ubdb_a1",0.03322928],["ubdb_a2",0.0901035],["ubdb_a3",3.34361562e-04],["ubdb_a4", 0.500],["ubdb_a5", 0.0 ],
+           ["ubdb_b1", 0.88106595],["ubdb_b2",0.94003832],["ubdb_b3", 6.62873565e+00],["ubdb_b4",0.0],["ubdb_b5", 0.0 ]]
+  ssbps: [["ssbsum_p0", 0.50002],["ssb_p1",-0.20775],["ssb_p2", 8.3286],["ssb_p3", 0.0 ]    ,["ssb_p4", 14.606], ["ssb_p5", 0.0],
+          ["ssbsum_a0",0.0237683 ],["ssb_a1", 0.0917854],["ssb_a2",1.11999193],["ssb_a3", 0.00000],["ssb_a4", 0.00000],["ssb_a5", 0.00000],
+          ["ssbsum_b0",0.91302023],["ssb_b1", 0.57934651],["ssb_b2",0.36066306],["ssb_b3", 0.00000],["ssb_b4", 0.00000],["ssb_b5", 0.00000]]
+  dboubps: [["dboub_p0", 35712 ],["dboub_p1", 4.0249],["dboub_p2", 20.154],["dboub_p3",17.00000],["dboub_p4",51.156], ["dboub_p5",0.0],
+            ["dboub_a0",0.0],    ["dboub_a1",0.0],      ["dboub_a2",0.0],      ["dboub_a3",0.0],     ["dboub_a4",0.0], ["dboub_a5",0.0],
+            ["dboub_b0",0.0],    ["dboub_b1",0.0],      ["dboub_b2",0.0],      ["dboub_b3",0.0],     ["dboub_b4",0.0], ["dboub_b5",0.0]]
+  
+
+SumRuleSettings:
+  AbsErr: 0.0  # absolute erros
+  RelErr: 0.0001  # relative error  s #0.001
+  LowBound: 1e-8  # Lower bound for the integration of sum rules
+  UpBound: 1.0  #  Upper bound for the integration of sum rules
+  CubatureIntegrator: HCUB  # integrator for the sum rules one of: HCUB, PCUB. Note, seems that PCUB is 5 times faster for this case
+  EpsMom: 0.01 # Allowed momentum vaiolation
+
+Minimizer:
+
+  FitParams: [[kappa, [7.6299991165009029, 0.021977, 0.0, 20.0], BOUNDED], [c, [0.022108158882263501, 0.01, 0.0, 0.5], BOUNDED], [uv_a1, [0.0060394492551979527, 0.01], FREE], 
+                 [uv_b1, [-0.0037071919716816838, 0.01], FREE], [uv_a2, [-0.05540768677144909, 0.01], FREE], [uv_b2, [0.010381999109664117, 0.01], FREE], [dv_a1, [-0.046190676744391694, 0.01], FREE], 
+                 [dv_b1, [0.01509496622569349, 0.01], FREE], [dv_a2, [0.10261284366512524, 0.01], FREE], [dv_b2, [0.031159139647032815, 0.01], FREE], [g_a2, [0.4276430004120032, 0.01], FREE], 
+                 [g_b2, [-0.045385005679057969, 0.01], FREE], [ubdb_a2, [0.43556144374527989, 0.01], FREE], [ubdb_b2, [-0.072211090747587164, 0.01], FREE], [uv_a3, [0.0571136474609375, 0.01], FREE], 
+                 [uv_a4, [-1.099405288696289, 0.01], FREE], [uv_b3, [0.3113021850585938, 0.01], FREE], [uv_b4, [0.01106834411621094, 0.01], FREE], [dv_a3, [-0.1187629699707031, 0.01], FREE], 
+                 [dv_a4, [0.4648189544677734, 0.01], FREE], [dv_b3, [0.008977890014648438, 0.01], FREE], [dv_b4, [-0.07407379150390625, 0.01], FREE], [gsum_a0, [0.1525135040283203, 0.01], FREE], 
+                 [g_a1, [-0.01381683349609375, 0.01], FREE], [g_a3, [-0.02495384216308594, 0.01], FREE], [g_a4, [0.1158599853515625, 0.01], FREE], [gsum_b0, [0.03022193908691406, 0.01], FREE], 
+                 [g_b1, [0.01927757263183594, 0.01], FREE], [g_b3, [-0.0037994384765625, 0.01], FREE], [g_b4, [-0.01383018493652344, 0.01], FREE], [ubdb_a1, [0.09554862976074219, 0.01], FREE], 
+                 [ubdb_a3, [-1.758447647094727, 0.01], FREE], [ubdb_a4, [-1.303609848022461, 0.01], FREE], [ubdb_b1, [-0.01736831665039062, 0.01], FREE], [ubdb_b3, [0.4734897613525391, 0.01], FREE], 
+                 [ubdb_b4, [0.5502185821533203, 0.01], FREE], [ssbsum_a0, [0.1111660003662109, 0.01], FREE], [ssb_a1, [0.1379680633544922, 0.01], FREE], [ssb_a2, [1.108478546142578, 0.01], FREE], 
+                 [ssbsum_b0, [-0.0257720947265625, 0.01], FREE], [ssb_b1, [-0.01278877258300781, 0.01], FREE], [ssb_b2, [-0.06501388549804688, 0.01], FREE]]
+
+
+  FitParams: [[c, [0.000527312, 0.000001, 0.0, 0.5], BOUNDED],[uv_a2, [-0.0753478, 0.01], FREE], [uv_b2, [0.00981641, 0.01], FREE],[dv_a2, [0.160699, 0.01], FREE],
+                 [dv_b2, [0.0444045, 0.01], FREE],
+              [uv_a1, [0.005176544189453125, 0.01], FREE ], [uv_b1, [-0.004337310791015625, 0.01], FREE],
+                [dv_a1, [-0.04199600219726562, 0.01], FREE], [dv_b1, [0.0180206298828125, 0.01], FREE],  [ubdb_b2, [-0.06880760192871094, 0.01], FREE],
+              [g_a2, [0.42425537109375, 0.01], FREE], [g_b2, [-0.04571151733398438, 0.01], FREE], [ubdb_a2, [0.4565544128417969, 0.01], FREE],
+              ]
+Output:  #  Sets up the output and the size of the grids for that matter
+  OutputDir: "../results/Base_nCTEQ22"
+  FitLabel: "Base_nCTEQ22"
+
+OutputableSetOfLHAPDFs:
+  OutputNuclei:  [P, H2, HE3, HE4, LI6, LI7, BE9, C12, N14, AL27, CA40, FE56, FE56iso, CU64, KR84, AG108, SN119, XE131, W184, AU197, PB208, PB207iso, AU197iso]
+  LHAPDFinfo.Authors: "E. Godat, F. Lyonnet, F. Olness, A. Kusina, T. Jezo"
+  LHAPDFinfo.Reference: "arxiv:XXX.xxxx"
+  LHAPDFinfo.ErrorType: "symmHessian"
+  LHAPDFinfo.ErrorConfLevel: 90
+  LHAPDFinfo.LhagridFormat: "lhagrid1"
+  LHAPDFinfo.DataVersion: 1
+  LHAPDFinfo.Particle: 2212
+  LHAPDFinfo.Xmin: 1e-8
+  LHAPDFinfo.Xmax: 1.0
+  LHAPDFinfo.Qmin: 1.3001
+  LHAPDFinfo.Qmax: 10000
+  LHAPDFinfo.SetIndex:  [001001, 002001, 003002, 004002,006003, 007003, 009004, 012006, 014007, 027013, 040020, 056026, 056028, 064029, 084036, 108047, 119050, 131054, 184074, 197079, 208082, 207103, 197098]
+
+ErrorAnalysis:
+  UseKfactor: true
+  FirstDerivativeOrder: 3
+  SecondDerivativeOrder: 3
+  RescalingScheme: 1 # 0 - no rescaling, 1 - asymmetric eigenvalue rescale, 2 - symmetric eigenvalue rescale (nCTEQ15), may underestimate errors
+  Chi2Tolerance: 35
+
+Scans:
+  UseKfactor: false  # Kfactors are currently not implemented in Scans (always without) 
+  symmetricParamScans: true # If true, the scans along single parameters are performed symmetrically around the minimum using the range of the longer direction. Otherwise positive and negative direction are scaled to the tolerance individually and this region is sampled linearly. EVscans are always symmetric.
+  Chi2Tolerance: 35
+  rangeMargin: 2.0
+  numberOfSteps: 10
+  perPointScan: true # If true, save full chi2 breakdown for each scanned point (very large output file and can take many GB of RAM during runtime)
+  perDataScan: true # If true, save full chi2 breakdown for each scanned point
+
+VBP:
+  Prec: 1e-4 # 1e-4
+  UseKfactor: false
+  NbFlavor: 5
+  # If Iscl = 0 : keep Amu = Q in Vbp calculations
+  #         = 1 : treat Amu as independent, and vary qscl in Amu = qscal * Q
+  IRscl: 0
+
+F123L:
+  Ischeme: 9 
+  #0: NLO Massless MSBar,
+  #1: Full ACOT,
+  #2: FFS,
+  #3: Simplified ACOT,
+  #4: Test Full ACOT (no NLO Q),
+  #5: LO,
+  #6: LO massless,
+  #7: Short-cut2: ACOT with massless NLO-Q,
+  #8: S-ACOT (DIRTY),
+  #9: S-ACOT (GOOD one)
+  Imode: 1  #1: TOT, 2: Charm, 3: Bottom
+  AbsErr: 0  # Absolute error for the integration
+  RelErr: 1e-3 # Relative error 1e-3
+  UseKfactor: false # switch off the kfactor 
+  iTMC : 3 # 0 : Pure ACOT, 1: Leading OPE TMC, 2: FULL OPE TMC (very very slow), 3: FULL OPE TMC Parameterizations
+  HT : CJ # None : no HT applied, CJ: HT from CJ15 paper
+  DeutCorr : DCJ/PCJ # "ISO-BASE", "DCJ/PCJ", "DCJ/ISOCJ", "DCJ", "FIT"
+
+SIHSettings:
+  UseGrids: 4 # 0: no grids, 4: NLO grids (see INCNLO-fast.h for all options)
+  UsePPGrids: 0 # 0: use precomputed value (best), -1: always recompute, 4: NLO grids (don't use unless comparing with legacy fits)
+  Verbose: 0  # 0: no output, 1: kinematics and R_pPb, 2: full INCNLO output, 3: same as 1, but write to file (one file per chi2 evaluation)
+  Pi0Fragmentation: 7 # 1: BKK, 2: KKP, 4: KRETZER (grids not working), 5: HKNS (501-534 HKNS Hessian Error FFs (501,502),(503,504),...), 6: AKK, 7: DSS (672-728 DSS Hessian Error FFs (699,701),(698,702),...), 9: NNFF (9000-9100 MC errors), 10: JAM19 (10000-10581 MC errors)
+  ChargedPiFragmentation: 7 # 1: BKK, 2: KKP, 4: KRETZER (grids not working), 5: HKNS, 6: AKK, 7: DSS, 9: NNFF, 10: JAM19
+  ChargedKFragmentation: 7 # 1: BKK, 2: KKP, 4: KRETZER (grids not working), 5: HKNS, 6: AKK, 9: NNFF, 10: JAM19
+  EtaFragmentation: 8 # 8: AESSS

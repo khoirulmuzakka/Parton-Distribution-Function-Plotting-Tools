@@ -1,0 +1,80 @@
+dependent_variables:
+- header: {name: F2}
+  qualifiers:
+  - {name: PLAB, units: GEV, value: '3.748,24.503'}
+  - {name: RE, value: E- DEUT --> E- X}
+  - {name: X, value: '0.08'}
+  values:
+  - errors:
+    - {label: stat, symerror: 0.00367}
+    - {label: sys, symerror: 0.00288}
+    value: 0.26223
+  - errors:
+    - {label: stat, symerror: 0.00464}
+    - {label: sys, symerror: 0.00355}
+    value: 0.27289
+  - errors:
+    - {label: stat, symerror: 0.00558}
+    - {label: sys, symerror: 0.00353}
+    value: 0.29394
+  - errors:
+    - {label: stat, symerror: 0.00297}
+    - {label: sys, symerror: 0.00326}
+    value: 0.29666
+  - errors:
+    - {label: stat, symerror: 0.00336}
+    - {label: sys, symerror: 0.00275}
+    value: 0.30506
+  - errors:
+    - {label: stat, symerror: 0.00402}
+    - {label: sys, symerror: 0.00402}
+    value: 0.30927
+  - errors:
+    - {label: stat, symerror: 0.00381}
+    - {label: sys, symerror: 0.00318}
+    value: 0.31788
+  - errors:
+    - {label: stat, symerror: 0.00803}
+    - {label: sys, symerror: 0.00321}
+    value: 0.3214
+  - errors:
+    - {label: stat, symerror: 0.00542}
+    - {label: sys, symerror: 0.00638}
+    value: 0.3191
+  - errors:
+    - {label: stat, symerror: 0.00615}
+    - {label: sys, symerror: 0.00582}
+    value: 0.32356
+  - errors:
+    - {label: stat, symerror: 0.00522}
+    - {label: sys, symerror: 0.00457}
+    value: 0.32638
+  - errors:
+    - {label: stat, symerror: 0.00333}
+    - {label: sys, symerror: 0.00599}
+    value: 0.33272
+  - errors:
+    - {label: stat, symerror: 0.00953}
+    - {label: sys, symerror: 0.00783}
+    value: 0.34034
+  - errors:
+    - {label: stat, symerror: 0.00667}
+    - {label: sys, symerror: 0.00734}
+    value: 0.33354
+independent_variables:
+- header: {name: Q2, units: GEV**2}
+  values:
+  - {value: 0.582}
+  - {value: 0.662}
+  - {value: 0.811}
+  - {value: 0.893}
+  - {value: 1.012}
+  - {value: 1.117}
+  - {value: 1.24}
+  - {value: 1.44}
+  - {value: 1.532}
+  - {value: 1.661}
+  - {value: 1.808}
+  - {value: 1.993}
+  - {value: 2.146}
+  - {value: 2.419}
